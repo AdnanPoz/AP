@@ -1,3 +1,88 @@
+// **Funkcija za validaciju forme
+
+    var ime = document.forms['form']['ime'];
+    var prezime = document.forms['form']['prezime'];
+    var datum = document.forms['form']['datum'];
+    var spol = document.forms['form']['spol'];
+    var jmbg = document.forms['form']['jmbg'];
+    
+    var imeError = document.getElementById('imeError');
+    var prezimeError = document.getElementById('prezimeError');
+    var datumError = document.getElementById('datumError');
+    var spolError = document.getElementById('spolError');
+    var jmbgError = document.getElementById('jmbgError');
+
+    ime.addEventListener('textInput', ime_Verify);
+    prezime.addEventListener('textInput', prezime_Verify);
+    datum.addEventListener('textInput', datum_Verify);
+    spol.addEventListener('textInput', spol_Verify);
+    jmbg.addEventListener('numberInput', jmbg_Verify);
+    
+    function validated(){
+        if (ime.value.length < 3) {
+            ime.style.border = "1px solid red";
+            imeError.style.display = "block";
+            return false;
+        }
+        if (prezime.value.length < 4) {
+            prezime.style.border = "1px solid red";
+            prezimeError.style.display = "block";
+            return false;
+        }
+        if (datum.value.length > 8) {
+            datum.style.border = "1px solid red";
+            datumError.style.display = "block";
+            return false;
+        }
+        if (spol.value.length > 1) {
+            spol.style.border = "1px solid red";
+            spolError.style.display = "block";
+            return false;
+        }
+        if (jmbg.value.length <= 11) {
+            jmbg.style.border = "1px solid red";
+            jmbgError.style.display = "block";
+            return false;
+        }
+    }
+    function ime_Verify(){
+        if (ime.value.length >= 3) {
+            ime.style.border = "1px solid silver";
+            imeError.style.display = "none";
+            return true;
+
+        }
+    }
+    function prezime_Verify(){
+        if (prezime.value.length >= 4) {
+            prezime.style.border = "1px solid silver";
+            prezimeError.style.display = "none";
+            return true;
+        }
+        
+    }
+    function datum_Verify(){
+        if (datum.value.length === 7) {
+            datum.style.border = "1px solid silver";
+            datumError.style.display = "none";
+            return true;
+        }
+    }
+    function spol_Verify(){
+        if (spol.value.length === 0) {
+            spol.style.border = "1px solid silver";
+            spolError.style.display = "none";
+            return true;
+        }
+    }
+    function jmbg_Verify(){
+        if (jmbg.value.length === 12) {
+            jmbg.style.border = "1px solid silver";
+            jmbgError.style.display = "none";
+            return true;
+        } 
+    };
+    
 
 // **Funkcija za dodavanje reda u tabelu**
 
@@ -7,7 +92,7 @@
 
 function dodajRed(){
     let cellIme = [];      //Prazni nizovi kojima ce se dodjeliti vrijednosti HTML elemenata 
-    let cellPrezime = [];      // vrijednosti koje ce kasnije varijablama cel.
+    let cellPrezime = [];      // vrijednosti koje ce kasnije proslijediti varijablama cel.
     let cellDatum = [];
     let cellSpol = [];
     let cellJmbg = [];
@@ -37,4 +122,4 @@ function dodajRed(){
     cel5.innerHTML = cellJmbg[i];
 };
 
-// **Funkcija za validaciju forme
+
