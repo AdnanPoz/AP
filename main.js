@@ -6,79 +6,84 @@
     var spol = document.forms['form']['spol'];
     var jmbg = document.forms['form']['jmbg'];
     
-    var imeError = document.getElementById('imeError');
-    var prezimeError = document.getElementById('prezimeError');
-    var datumError = document.getElementById('datumError');
-    var spolError = document.getElementById('spolError');
-    var jmbgError = document.getElementById('jmbgError');
+    var imeGreska = document.getElementById('imeGreska');
+    var prezimeGreska = document.getElementById('prezimeGreska');
+    var datumGreska = document.getElementById('datumGreska');
+    var spolGreska = document.getElementById('spolGreska');
+    var jmbgGreska = document.getElementById('jmbgGreska');
 
-    ime.addEventListener('textInput', ime_Verify);
-    prezime.addEventListener('textInput', prezime_Verify);
-    datum.addEventListener('textInput', datum_Verify);
-    spol.addEventListener('textInput', spol_Verify);
-    jmbg.addEventListener('numberInput', jmbg_Verify);
+    ime.addEventListener('textInput', imePotvrdi);
+    prezime.addEventListener('textInput', prezimePotvrdi);
+    datum.addEventListener('textInput', datumPotvrdi);
+    spol.addEventListener('textInput', spolPotvrdi);
+    jmbg.addEventListener('numberInput', jmbgPotvrdi);
     
-    function validated(){
+    function potvrdi(){
         if (ime.value.length < 3) {
             ime.style.border = "1px solid red";
-            imeError.style.display = "block";
+            imeGreska.style.display = "block";
             return false;
         }
         if (prezime.value.length < 4) {
             prezime.style.border = "1px solid red";
-            prezimeError.style.display = "block";
+            prezimeGreska.style.display = "block";
             return false;
         }
         if (datum.value.length > 8) {
             datum.style.border = "1px solid red";
-            datumError.style.display = "block";
+            datumGreska.style.display = "block";
             return false;
         }
         if (spol.value.length > 1) {
             spol.style.border = "1px solid red";
-            spolError.style.display = "block";
+            spolGreska.style.display = "block";
             return false;
         }
         if (jmbg.value.length <= 11) {
             jmbg.style.border = "1px solid red";
-            jmbgError.style.display = "block";
+            jmbgGreska.style.display = "block";
             return false;
         }
     }
-    function ime_Verify(){
+
+    function myFunction() {
+        document.getElementById("myForm").reset();
+      }
+      
+    function imePotvrdi(){
         if (ime.value.length >= 3) {
             ime.style.border = "1px solid silver";
-            imeError.style.display = "none";
+            imeGreska.style.display = "none";
             return true;
 
         }
     }
-    function prezime_Verify(){
+    function prezimePotvrdi(){
         if (prezime.value.length >= 4) {
             prezime.style.border = "1px solid silver";
-            prezimeError.style.display = "none";
+            prezimeGreska.style.display = "none";
             return true;
         }
         
     }
-    function datum_Verify(){
+    function datumPotvrdi(){
         if (datum.value.length === 7) {
             datum.style.border = "1px solid silver";
-            datumError.style.display = "none";
+            datumGreska.style.display = "none";
             return true;
         }
     }
-    function spol_Verify(){
+    function spolPotvrdi(){
         if (spol.value.length === 0) {
             spol.style.border = "1px solid silver";
-            spolError.style.display = "none";
+            spolGreska.style.display = "none";
             return true;
         }
     }
-    function jmbg_Verify(){
+    function jmbgPotvrdi(){
         if (jmbg.value.length === 12) {
             jmbg.style.border = "1px solid silver";
-            jmbgError.style.display = "none";
+            jmbgGreska.style.display = "none";
             return true;
         } 
     };

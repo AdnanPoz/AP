@@ -21,11 +21,11 @@ input {
 .myForm button:hover{
 	background: #151c6a;
 }
-.myForm #imeError,
-.myForm #prezimeError,
-.myForm #datumError,
-.myForm #spolError,
-.myForm #jmbgError{
+.myForm #imeGreska,
+.myForm #prezimeGreska,
+.myForm #datumGreska,
+.myForm #spolGreska,
+.myForm #jmbgGreska {
 	margin-top: 5px;
 	width: 345px;
 	font-size: 18px;

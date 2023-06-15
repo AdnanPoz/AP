@@ -25,17 +25,17 @@
                   <div class="row">
                     <div class="col-md-12">
                         <div class="table-responsive">
-                            <form class="myForm"  name="form" onsubmit="return validated()"  >
-                                <input type="text" name="ime" class="modal-form"  placeholder="ime" id="ime">
-                                <div id="imeError">Molim upišite potrebne podatke</div>
-                                <input type="text" name="prezime" class="modal-form" placeholder="prezime" id="prezime">
-                                <div id="prezimeError">Molim upišite potrebne podatke</div>
-                                <input type="number" name="datum" class="modal-form" placeholder="datum" id="datum">
-                                <div id="datumError">Molim upišite potrebne podatke</div>
-                                <input type="text" name="spol" class="modal-form" placeholder="spol" id="spol">
-                                <div id="spolError">Molim upišite potrebne podatke</div>
-                                <input type="number" name="jmbg" class="modal-form" placeholder="jmbg" id="jmbg" >
-                                <div id="jmbgError">Molim upišite potrebne podatke</div>                                                                
+                            <form class="myForm"  name="form" onsubmit="return potvrdi()"  >
+                                <input type="text" name="ime" class="modal-form"  placeholder="ime" id="ime" required>
+                                <div id="imeGreska">Molim upisite ime</div>
+                                <input type="text" name="prezime" class="modal-form" placeholder="prezime" id="prezime" required>
+                                <div id="prezimeGreska">Molim upisite prezime</div>
+                                <input type="number" name="datum" class="modal-form" placeholder="datum" id="datum" required>
+                                <div id="datumGreska">Molim upisite datum</div>
+                                <input type="text" name="spol" class="modal-form" placeholder="spol" id="spol" required>
+                                <div id="spolGreska">Molim upisite spol</div>
+                                <input type="number" name="jmbg" class="modal-form" placeholder="jmbg" id="jmbg" required>
+                                <div id="jmbgGreska">Molim upisite jmbg</div>                                                                
                               </form>
                         </div>
                     </div>
@@ -44,7 +44,7 @@
         </div>
         <div class="modal-footer">
          
-          <button type="submit" class="btn btn-primary" value="btn-modal" onclick=" dodajRed(); return validated();" id="btn-modal" name="btnDodaj">Dodaj</button>
+          <button type="submit" class="btn btn-primary" value="btn-modal" onclick=" dodajRed(); return potvrdi();" id="btn-modal" name="btnDodaj">Dodaj</button>
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Zatvori</button>
           
         </div>
