@@ -25,7 +25,7 @@
                   <div class="row">
                     <div class="col-md-12">
                         <div class="table-responsive">
-                            <form class="myForm"  name="form" onsubmit="return potvrdi()"  >
+                            <form class="myForm"  name="form" onsubmit="return greska()"  >
                                 <input type="text" name="ime" class="modal-form"  placeholder="ime" id="ime" required>
                                 <div id="imeGreska">Molim upisite ime</div>
                                 <input type="text" name="prezime" class="modal-form" placeholder="prezime" id="prezime" required>
@@ -44,7 +44,7 @@
         </div>
         <div class="modal-footer">
          
-          <button type="submit" class="btn btn-primary" value="btn-modal" onclick=" dodajRed(); return potvrdi();" id="btn-modal" name="btnDodaj">Dodaj</button>
+          <button type="submit" class="btn btn-primary" value="btn-modal" onclick=" dodajRed(); return greska();" id="btn-modal" name="btnDodaj">Dodaj</button>
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Zatvori</button>
           
         </div>

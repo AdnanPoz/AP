@@ -1,24 +1,23 @@
 // **Funkcija za validaciju forme
 
-    var ime = document.forms['form']['ime'];
-    var prezime = document.forms['form']['prezime'];
-    var datum = document.forms['form']['datum'];
-    var spol = document.forms['form']['spol'];
-    var jmbg = document.forms['form']['jmbg'];
+    let ime = document.forms['form']['ime'];
+    let prezime = document.forms['form']['prezime'];
+    let datum = document.forms['form']['datum'];       //proslijeđivanje svojstva forme i inputa u formi u varijable
+    let spol = document.forms['form']['spol'];
+    let jmbg = document.forms['form']['jmbg'];
     
-    var imeGreska = document.getElementById('imeGreska');
-    var prezimeGreska = document.getElementById('prezimeGreska');
-    var datumGreska = document.getElementById('datumGreska');
-    var spolGreska = document.getElementById('spolGreska');
-    var jmbgGreska = document.getElementById('jmbgGreska');
+    let imeGreska = document.getElementById('imeGreska');
+    let prezimeGreska = document.getElementById('prezimeGreska');
+    let datumGreska = document.getElementById('datumGreska');       // smještanje   div elemenata iz HTML-a u varijable putem ID-a-   
+    let spolGreska = document.getElementById('spolGreska');
+    let jmbgGreska = document.getElementById('jmbgGreska');
 
-    ime.addEventListener('textInput', imePotvrdi);
-    prezime.addEventListener('textInput', prezimePotvrdi);
-    datum.addEventListener('textInput', datumPotvrdi);
-    spol.addEventListener('textInput', spolPotvrdi);
-    jmbg.addEventListener('numberInput', jmbgPotvrdi);
+    ime.addEventListener('textInput', imePotvrdi);                 // dodavanje event listener-a sa dva argumenta na već definisane varijable koje su u stvari inputi u formi 
+    prezime.addEventListener('textInput', prezimePotvrdi);         // prvi argument je da se "slusa" tekst koji se unese a drugi su funkcije koje se izvršavaju onda kada se 
+    datum.addEventListener('textInput', datumPotvrdi);             // utvrdi da je unos koji je unesen istinit odnosno da su uslovi iz funkcije ispunjeni
+    spol.addEventListener('textInput', spolPotvrdi);               
     
-    function potvrdi(){
+    function greska(){
         if (ime.value.length < 3) {
             ime.style.border = "1px solid red";
             imeGreska.style.display = "block";
@@ -30,8 +29,8 @@
             return false;
         }
         if (datum.value.length > 8) {
-            datum.style.border = "1px solid red";
-            datumGreska.style.display = "block";
+            datum.style.border = "1px solid red";                     //Funkcija koja se izvršava onda kada je unos "laz" odnosno oboji onaj blok inputa u kojem
+            datumGreska.style.display = "block";                      // unesena vrijednost ne odgovara uslovima iz funkcija "true"  
             return false;
         }
         if (spol.value.length > 1) {
@@ -46,9 +45,6 @@
         }
     }
 
-    function myFunction() {
-        document.getElementById("myForm").reset();
-      }
       
     function imePotvrdi(){
         if (ime.value.length >= 3) {
@@ -72,8 +68,8 @@
             datumGreska.style.display = "none";
             return true;
         }
-    }
-    function spolPotvrdi(){
+    }                                                           // funkcije koje kada potvrde da je uslov ispunjen odnosno kada se unese ispravna vrijednost
+    function spolPotvrdi(){                                     // oboje blokove inputa u sivu boju.
         if (spol.value.length === 0) {
             spol.style.border = "1px solid silver";
             spolGreska.style.display = "none";
