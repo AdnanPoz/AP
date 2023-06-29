@@ -15,7 +15,8 @@
     ime.addEventListener('textInput', imePotvrdi);                 // dodavanje event listener-a sa dva argumenta na već definisane varijable koje su u stvari inputi u formi 
     prezime.addEventListener('textInput', prezimePotvrdi);         // prvi argument je da se "slusa" tekst koji se unese a drugi su funkcije koje se izvršavaju onda kada se 
     datum.addEventListener('textInput', datumPotvrdi);             // utvrdi da je unos koji je unesen istinit odnosno da su uslovi iz funkcije ispunjeni
-    spol.addEventListener('textInput', spolPotvrdi);               
+    spol.addEventListener('textInput', spolPotvrdi); 
+    jmbg.addEventListener('textInput', jmbgPotvrdi);                
     
     function greska(){
         if (ime.value.length < 3) {
@@ -38,20 +39,19 @@
             spolGreska.style.display = "block";
             return false;
         }
-        if (jmbg.value.length <= 11) {
+        if (jmbg.value.length <= 12 || jmbg.value.length > 13) {
             jmbg.style.border = "1px solid red";
             jmbgGreska.style.display = "block";
             return false;
         }
-    }
+    };
 
-      
+   
     function imePotvrdi(){
         if (ime.value.length >= 3) {
             ime.style.border = "1px solid silver";
             imeGreska.style.display = "none";
             return true;
-
         }
     }
     function prezimePotvrdi(){
@@ -83,13 +83,28 @@
             return true;
         } 
     };
+
+    // **Funkcija koja poziva sve ostale funkcije**
+    function final(){
+        if(greska() === false){
+        alert('Upisite potrebne podatke!')                      //funkcija koju sam smjestio u  event-handlera Onclick  
+        } else{                                                 //tako da kada se dugme "Dodaj" pritisne funkcija se pozove a unutar nje se pozove funkcija
+         dodajRed()                                             //dodajRed() ako su uslovi ispunjeni. Ako uslovi nisu ispunjeni "iskociti" ce
+         resetModal()                                           // pop up prozor sa upozorenjem. tu je i linija koja isključuje dugme nakon 
+        }                                                       //uspjesnog dodavanja.
+    };                                                           
     
+    // **Funkcija za resetovanje modala**
+    
+    function resetModal() {
+        var element = document.getElementById("myForm");
+        element.reset()
+    };
+    
+// **Funkcija za dodavanje reda i celija u tabelu skupa sa sadrzajem koji  je u njih upisan**
 
-// **Funkcija za dodavanje reda u tabelu**
-
-// Funkciju dodajRed() sam dodao u dugme "dodaj" putem event-handlera Onclick tako da kada se 
-//dugme pritisne funkcija dodajRed() se pozove a unutar nje se jedan put pozove insertRow() metoda  
-// i pet puta insertCell metoda.
+// Funkciju dodajRed() sam dodao u funkciju final() tako da ako su uslovi iz pomenute funkcije ispunjeni,
+// funkcija dodajRed() se pozove a unutar nje se jedan put pozove insertRow() metoda  i pet puta insertCell metoda.
 
 function dodajRed(){
     let cellIme = [];      //Prazni nizovi kojima ce se dodjeliti vrijednosti HTML elemenata 
@@ -102,8 +117,7 @@ function dodajRed(){
     let i = 0;                                        // varijabla element niza 
     let redDodaj = document.getElementById('dodaj');  //pristupanje HTML elementu  putem ID-a odnosno pristupanje  tabeli na koju ce se dodavati novi red te dodjeljivanje njenih svojstava varijabli redDodaj.
     let noviRed = redDodaj.insertRow(n);             // varijabli noviRed se  proslijede svojstva varijable redDodaj kojoj je dodana metoda kreiranja novog reda.
-    
-    
+     
     cellIme[i] = document.getElementById("ime").value;
     cellPrezime[i] = document.getElementById("prezime").value;
     cellDatum[i] = document.getElementById("datum").value;  //pristupanje HTML elementima putem ID-a te prosljedjivanje 
@@ -112,7 +126,7 @@ function dodajRed(){
 
     let cel1= noviRed.insertCell(0);
     let cel2= noviRed.insertCell(1);
-    let cel3= noviRed.insertCell(2); // varijablama cel se dodaje svojstvo varijable novi.Red kojoj 
+    let cel3= noviRed.insertCell(2); // varijablama cel se dodaje svojstvo varijable noviRed kojoj 
     let cel4= noviRed.insertCell(3); // se dodjeljuje metoda za kreiranje jedne celije odnosno kreiranja polja u tabeli.
     let cel5= noviRed.insertCell(4); // pozvace se za svako polje posebno tj. pet puta.
 
@@ -121,6 +135,6 @@ function dodajRed(){
     cel3.innerHTML = cellDatum[i];   // vrijednosti varijabli cellIme, prezime... (text i brojevi koji se unesu u poljima) se 
     cel4.innerHTML = cellSpol[i];   // proslijede varijablama cel te se kao takve ispišu u HTML elementu odnosno tabeli.  
     cel5.innerHTML = cellJmbg[i];
-};
+};    
 
 
